@@ -2,32 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Everyday TrueAI</title>
+  <title>Everyday TrueAI · Advisory Studio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Everyday TrueAI – Real talk. Real tools. Real life. A real-world AI lab for everyday people."
+    content="Everyday TrueAI – A flexible AI advisory and consulting studio for real people, teams, and small businesses."
   />
   <style>
     :root {
-      --bg: #03040a;
-      --bg-soft: #080a12;
-      --card-bg: #0b0e17;
-      --card-alt-bg: #0f111a;
+      --bg: #05060a;
+      --bg-soft: #070814;
+      --card-bg: #0f1118;
       --accent: #4fd1c5;
-      --accent-soft: rgba(79, 209, 197, 0.16);
-      --accent-strong-soft: rgba(79, 209, 197, 0.25);
+      --accent-soft: rgba(79, 209, 197, 0.12);
+      --accent-strong: rgba(79, 209, 197, 0.3);
       --text-main: #f7fafc;
       --text-sub: #a0aec0;
       --border-soft: #2d3748;
-      --border-strong: rgba(79, 209, 197, 0.6);
       --max-width: 1100px;
       --radius-lg: 20px;
-      --radius-md: 16px;
-      --shadow-hero: 0 22px 50px rgba(0, 0, 0, 0.8);
-      --shadow-card: 0 14px 34px rgba(0, 0, 0, 0.7);
-      --shadow-card-hover: 0 20px 44px rgba(0, 0, 0, 0.85);
-      --transition-fast: 160ms ease-out;
+      --radius-md: 14px;
+      --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.7);
+      --shadow-soft: 0 14px 30px rgba(0, 0, 0, 0.55);
     }
 
     * {
@@ -39,217 +35,148 @@
       padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
+      background: radial-gradient(circle at top, #1a202c 0, #05060a 55%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       align-items: stretch;
       justify-content: center;
-      background: radial-gradient(circle at top, #15192b 0, #03040a 55%),
-        radial-gradient(circle at bottom, #020308 0, #000 55%);
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* ambient gradient blobs */
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      width: 480px;
-      height: 480px;
-      border-radius: 50%;
-      filter: blur(68px);
-      opacity: 0.3;
-      pointer-events: none;
-      z-index: -1;
-      transform: translate3d(0, 0, 0);
-    }
-
-    body::before {
-      top: -140px;
-      left: -40px;
-      background: radial-gradient(circle, rgba(79, 209, 197, 0.9), transparent);
-    }
-
-    body::after {
-      bottom: -160px;
-      right: -80px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.85), transparent);
     }
 
     .page {
-      padding: 32px 16px 52px;
+      padding: 24px 16px 48px;
       width: 100%;
       max-width: var(--max-width);
       margin: auto;
     }
 
-    /* ---------- HEADER / HERO ---------- */
-
-    header {
-      border-radius: var(--radius-lg);
-      padding: 22px 22px 26px;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(15, 23, 42, 0.9),
-          rgba(15, 23, 42, 0.96)
-        );
-      border: 1px solid var(--border-strong);
-      box-shadow: var(--shadow-hero);
-      margin-bottom: 30px;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    header::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(79, 209, 197, 0.28), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.2), transparent 55%);
-      opacity: 0.55;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-
-    .header-inner {
-      position: relative;
-      z-index: 1;
+    /* Top nav */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      gap: 16px;
     }
 
     .logo-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .logo-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(79, 209, 197, 0.9);
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      border: 1px solid rgba(79, 209, 197, 0.6);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 650;
-      font-size: 17px;
-      letter-spacing: 0.08em;
-      background:
-        radial-gradient(circle at top, rgba(79, 209, 197, 0.45), transparent 60%),
-        linear-gradient(145deg, rgba(15, 118, 110, 0.65), rgba(15, 23, 42, 0.98));
-      text-transform: uppercase;
-      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.7);
-    }
-
-    .logo-mark span {
-      display: inline-block;
-      transform: translateY(0.5px);
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      background: radial-gradient(
+        circle at top,
+        rgba(79, 209, 197, 0.35),
+        transparent 60%
+      );
+      flex-shrink: 0;
     }
 
     .brand-text h1 {
-      font-size: clamp(1.55rem, 3.2vw, 1.95rem);
-      margin: 0 0 2px 0;
-      letter-spacing: 0.1em;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      margin: 0;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .brand-text .tagline {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       margin-top: 2px;
       color: var(--text-sub);
     }
 
-    .lab-tag {
-      font-size: 0.8rem;
-      color: rgba(203, 213, 224, 0.9);
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(79, 209, 197, 0.4);
-      background: rgba(10, 14, 25, 0.9);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
     }
 
-    .lab-tag-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 8px rgba(79, 209, 197, 0.9);
+    .nav-links a {
+      color: var(--text-sub);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
     }
 
-    .hero-main {
-      margin-top: 10px;
-      display: grid;
-      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.5fr);
-      gap: 22px;
-      align-items: flex-end;
+    .nav-links a:hover {
+      color: var(--text-main);
+      border-color: var(--accent);
     }
 
-    @media (max-width: 768px) {
-      .hero-main {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 16px;
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
       }
     }
 
-    .hero-copy h2 {
-      font-size: clamp(1.45rem, 3.1vw, 1.8rem);
-      margin: 0 0 10px 0;
-      position: relative;
-      display: inline-block;
+    /* Hero with image */
+    header {
+      border-radius: var(--radius-lg);
+      padding: 24px 22px 24px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(79, 209, 197, 0.16),
+          rgba(79, 209, 197, 0.03)
+        );
+      border: 1px solid rgba(79, 209, 197, 0.35);
+      box-shadow: var(--shadow-strong);
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
     }
 
-    .hero-copy h2::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 56%;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(
-        90deg,
-        rgba(79, 209, 197, 0.9),
-        rgba(56, 189, 248, 0.2)
-      );
-      opacity: 0.9;
+    @media (max-width: 880px) {
+      header {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
-    .hero-copy p {
-      margin: 12px 0 0;
+    .hero-main h2 {
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      margin: 0 0 8px 0;
+    }
+
+    .hero-main p {
+      margin: 0;
       color: var(--text-sub);
-      max-width: 40rem;
+      max-width: 36rem;
       line-height: 1.6;
-      font-size: 0.97rem;
+      font-size: 0.95rem;
     }
 
     .hero-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-top: 16px;
-      padding: 7px 12px;
+      margin-top: 14px;
+      padding: 6px 11px;
       border-radius: 999px;
-      background: rgba(12, 52, 61, 0.42);
-      border: 1px solid rgba(79, 209, 197, 0.55);
+      background: rgba(15, 118, 110, 0.14);
+      border: 1px solid rgba(79, 209, 197, 0.4);
       font-size: 0.8rem;
       color: var(--text-main);
-      backdrop-filter: blur(12px);
     }
 
     .hero-pill-dot {
@@ -262,206 +189,112 @@
 
     .hero-actions {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 12px;
-      justify-self: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
     }
 
-    @media (max-width: 768px) {
-      .hero-actions {
-        align-items: flex-start;
-        justify-self: flex-start;
-      }
-    }
-
-    /* ---------- HERO VISUAL (TECH NODE GRAPHIC) ---------- */
-
-    .hero-visual {
-      width: 100%;
-      max-width: 260px;
-      border-radius: 18px;
-      padding: 10px 10px 12px;
-      background: radial-gradient(
-          circle at top left,
-          rgba(79, 209, 197, 0.18),
-          transparent 55%
-        ),
-        rgba(10, 14, 25, 0.98);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.7);
-    }
-
-    .hero-visual-inner {
-      position: relative;
-      border-radius: 14px;
-      background: radial-gradient(
-        circle at 30% 0%,
-        rgba(79, 209, 197, 0.32),
-        transparent 60%
-      );
-      background-color: #020617;
-      height: 150px;
-      overflow: hidden;
-    }
-
-    .hv-orbit {
-      position: absolute;
+    .btn-primary,
+    .btn-ghost {
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      transform-origin: center;
-    }
-
-    .hv-orbit-1 {
-      width: 130px;
-      height: 130px;
-      top: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-style: dashed;
-      opacity: 0.8;
-    }
-
-    .hv-orbit-2 {
-      width: 90px;
-      height: 90px;
-      top: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-style: solid;
-      border-color: rgba(79, 209, 197, 0.75);
-      opacity: 0.9;
-    }
-
-    .hv-core {
-      position: absolute;
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background:
-        radial-gradient(circle, rgba(79, 209, 197, 1), rgba(59, 130, 246, 0.3));
-      box-shadow:
-        0 0 14px rgba(79, 209, 197, 0.9),
-        0 0 32px rgba(59, 130, 246, 0.6);
-    }
-
-    .hv-node {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.9);
-      box-shadow: 0 0 10px rgba(148, 163, 184, 0.9);
-    }
-
-    .hv-node-1 {
-      top: 36px;
-      left: 54%;
-      transform: translateX(-50%);
-      background: rgba(96, 165, 250, 0.95);
-      box-shadow: 0 0 12px rgba(96, 165, 250, 0.9);
-    }
-
-    .hv-node-2 {
-      bottom: 34px;
-      left: 32%;
-    }
-
-    .hv-node-3 {
-      bottom: 26px;
-      right: 22%;
-      background: rgba(45, 212, 191, 0.95);
-      box-shadow: 0 0 12px rgba(45, 212, 191, 0.9);
-    }
-
-    .hero-visual-line {
-      position: absolute;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        rgba(148, 163, 184, 0.1),
-        rgba(148, 163, 184, 0.8),
-        rgba(148, 163, 184, 0.1)
-      );
-      left: 16px;
-      right: 16px;
-      top: 50%;
-      opacity: 0.7;
-    }
-
-    .hero-visual-caption {
-      margin-top: 6px;
-      font-size: 0.72rem;
-      color: rgba(203, 213, 224, 0.9);
-      text-align: left;
-    }
-
-    .hero-visual-caption span {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    /* ---------- CTA + NOTE ---------- */
-
-    .primary-btn {
+      font-size: 0.9rem;
+      padding: 9px 18px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 9px 20px;
-      border-radius: 999px;
-      border: 1px solid rgba(15, 118, 110, 0.95);
+      gap: 6px;
+      transition: background 0.15s ease, border-color 0.15s ease,
+        color 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #021012;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(79, 209, 197, 0.35);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.7);
+      border-color: rgba(148, 163, 184, 0.5);
+      color: var(--text-sub);
+    }
+
+    .btn-ghost:hover {
+      color: var(--text-main);
+      border-color: var(--accent);
+    }
+
+    /* Hero image */
+    .hero-image {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 190px;
       background:
-        linear-gradient(135deg, rgba(79, 209, 197, 0.96), rgba(56, 189, 248, 0.92));
-      color: #020617;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      box-shadow: 0 18px 38px rgba(15, 118, 110, 0.7);
-      transition:
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast),
-        filter var(--transition-fast);
+        radial-gradient(circle at top, rgba(79, 209, 197, 0.28), transparent 60%),
+        linear-gradient(145deg, #020617, #020617);
+      border: 1px solid rgba(79, 209, 197, 0.3);
     }
 
-    .primary-btn:hover {
-      transform: translateY(-1.5px);
-      box-shadow: 0 24px 46px rgba(15, 118, 110, 0.9);
-      filter: brightness(1.04);
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("your-hero-image.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2; /* keep abstract and subtle */
+      mix-blend-mode: screen;
     }
 
-    .secondary-note {
-      font-size: 0.78rem;
-      color: rgba(203, 213, 224, 0.9);
-      max-width: 235px;
-      line-height: 1.5;
-      text-align: right;
+    .hero-image-overlay {
+      position: relative;
+      z-index: 1;
+      padding: 16px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
     }
 
-    @media (max-width: 768px) {
-      .secondary-note {
-        text-align: left;
-      }
+    .hero-image-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text-sub);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      backdrop-filter: blur(6px);
     }
 
-    .secondary-note strong {
-      font-weight: 600;
-      color: var(--accent);
+    .hero-image-text {
+      margin-top: auto;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      max-width: 17rem;
+      line-height: 1.45;
     }
 
-    /* ---------- MAIN LAYOUT ---------- */
-
+    /* Main layout */
     main {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
-      gap: 22px;
+      gap: 20px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 880px) {
       main {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -472,55 +305,12 @@
       gap: 16px;
     }
 
-    /* ---------- CARDS ---------- */
-
     .card {
       background: var(--card-bg);
       border-radius: var(--radius-md);
       padding: 18px 18px 20px;
       border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-card);
-      position: relative;
-      overflow: hidden;
-      transition:
-        border-color var(--transition-fast),
-        box-shadow var(--transition-fast),
-        transform var(--transition-fast),
-        background var(--transition-fast);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at top left,
-        rgba(79, 209, 197, 0.24),
-        transparent 55%
-      );
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity var(--transition-fast);
-    }
-
-    .card:hover {
-      border-color: var(--accent-soft);
-      box-shadow: var(--shadow-card-hover);
-      transform: translateY(-1px);
-      background: linear-gradient(160deg, var(--card-bg), rgba(15, 23, 42, 0.98));
-    }
-
-    .card:hover::before {
-      opacity: 0.75;
-    }
-
-    .card-alt {
-      background: radial-gradient(
-          circle at top left,
-          rgba(79, 209, 197, 0.18),
-          transparent 55%
-        ),
-        var(--card-alt-bg);
+      box-shadow: var(--shadow-soft);
     }
 
     .card h3 {
@@ -533,7 +323,7 @@
       margin-top: 0;
       margin-bottom: 10px;
       color: var(--text-sub);
-      line-height: 1.55;
+      line-height: 1.5;
       font-size: 0.93rem;
     }
 
@@ -547,9 +337,6 @@
       background: var(--accent-soft);
       color: var(--accent);
       margin-bottom: 8px;
-      border: 1px solid rgba(79, 209, 197, 0.5);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
     }
 
     .list {
@@ -573,62 +360,16 @@
     }
 
     .dot {
-      margin-top: 5px;
+      margin-top: 4px;
       font-size: 0.7rem;
       opacity: 0.7;
     }
 
-    /* Future directions as mini grid */
-    .future-grid {
+    .projects {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 6px;
-    }
-
-    @media (max-width: 640px) {
-      .future-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .future-tile {
-      padding: 10px 11px;
-      border-radius: 12px;
-      border: 1px solid rgba(45, 55, 72, 0.9);
-      background: rgba(9, 12, 20, 0.98);
+      gap: 8px;
+      margin-top: 4px;
       font-size: 0.9rem;
-      display: grid;
-      gap: 3px;
-      transition:
-        border-color var(--transition-fast),
-        background var(--transition-fast),
-        transform var(--transition-fast);
-    }
-
-    .future-tile-title {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #e2e8f0;
-    }
-
-    .future-tile-body {
-      color: var(--text-sub);
-      font-size: 0.83rem;
-      line-height: 1.5;
-    }
-
-    .future-tile:hover {
-      border-color: var(--accent-soft);
-      background: #0e1523;
-      transform: translateY(-0.5px);
-    }
-
-    .chip-row {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
     }
 
     .chip {
@@ -640,43 +381,19 @@
       border: 1px solid rgba(160, 174, 192, 0.7);
       font-size: 0.75rem;
       color: var(--text-sub);
-      background-color: rgba(15, 23, 42, 0.92);
     }
 
-    .chip::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      opacity: 0.7;
-    }
-
-    .contact-link {
+    .inline-link {
       color: var(--accent);
       text-decoration: none;
-      font-weight: 500;
     }
 
-    .contact-link:hover {
+    .inline-link:hover {
       text-decoration: underline;
     }
 
-    /* Contact card highlight */
-    .contact-card {
-      border-color: var(--accent-strong-soft);
-      background: radial-gradient(
-          circle at top left,
-          rgba(79, 209, 197, 0.24),
-          transparent 55%
-        ),
-        rgba(8, 11, 20, 0.98);
-    }
-
-    /* ---------- FOOTER ---------- */
-
     footer {
-      margin-top: 28px;
+      margin-top: 26px;
       font-size: 0.8rem;
       color: var(--text-sub);
       display: flex;
@@ -686,226 +403,205 @@
       border-top: 1px solid rgba(45, 55, 72, 0.7);
       padding-top: 10px;
     }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
   <div class="page">
-    <header>
-      <div class="header-inner">
-        <div class="logo-row">
-          <div class="logo-group">
-            <div class="logo-mark" aria-hidden="true">
-              <!-- Change these letters if you ever want a different monogram -->
-              <span>ET</span>
-            </div>
-            <div class="brand-text">
-              <h1>Everyday TrueAI</h1>
-              <div class="tagline">Real talk. Real tools. Real life.</div>
-            </div>
-          </div>
-          <div class="lab-tag">
-            <span class="lab-tag-dot"></span>
-            <span>RealWorld AI Lab · Detroit</span>
-          </div>
+    <!-- Top navigation -->
+    <div class="nav">
+      <div class="logo-row">
+        <div class="logo-mark">ET</div>
+        <div class="brand-text">
+          <h1>Everyday TrueAI</h1>
+          <div class="tagline">Real talk. Real tools. Real decisions.</div>
         </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Advisory</a>
+        <a href="#lab">RealWorld AI Lab</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
 
-        <div class="hero-main">
-          <div class="hero-copy">
-            <h2>A real-world AI lab for everyday people.</h2>
-            <p>
-              Everyday TrueAI helps real people use artificial intelligence with
-              truth, clarity, and confidence in their daily lives and work.
-            </p>
-            <div class="hero-pill">
-              <div class="hero-pill-dot"></div>
-              <div>In early-stage development · Founder-led studio</div>
-            </div>
+    <!-- Hero -->
+    <header>
+      <div class="hero-main">
+        <div class="hero-pill">
+          <div class="hero-pill-dot"></div>
+          <div>Independent AI advisory · Early-stage studio</div>
+        </div>
+        <h2>A flexible AI consulting and advisory partner for everyday work.</h2>
+        <p>
+          Everyday TrueAI helps real people, teams, and small businesses use
+          artificial intelligence with truth, clarity, and confidence—without
+          the hype or hand-waving.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Request a quick call</a>
+          <a href="#services" class="btn-ghost">Explore how we can help</a>
+        </div>
+      </div>
+
+      <div class="hero-image" aria-hidden="true">
+        <div class="hero-image-overlay">
+          <div class="hero-image-badge">
+            <span>RealWorld AI Lab</span>
+            <span>In active development</span>
           </div>
-
-          <div class="hero-actions">
-            <div class="hero-visual" aria-hidden="true">
-              <div class="hero-visual-inner">
-                <div class="hv-orbit hv-orbit-1"></div>
-                <div class="hv-orbit hv-orbit-2"></div>
-                <div class="hero-visual-line"></div>
-                <div class="hv-core"></div>
-                <div class="hv-node hv-node-1"></div>
-                <div class="hv-node hv-node-2"></div>
-                <div class="hv-node hv-node-3"></div>
-              </div>
-              <div class="hero-visual-caption">
-                Everyday systems, <span>linked by AI</span> instead of hype.
-              </div>
-            </div>
-
-            <a class="primary-btn" href="#contact">
-              Get in touch
-            </a>
-            <div class="secondary-note">
-              <strong>Human-first AI.</strong> Practical workflows, plain language,
-              and experiments you can actually use in real life.
-            </div>
+          <div class="hero-image-text">
+            A living lab where AI workflows, playbooks, and advisory offers
+            are tested and refined with real people and organizations.
           </div>
         </div>
       </div>
     </header>
 
     <main>
-      <div class="stack" aria-label="About and future directions">
-        <section class="card" aria-labelledby="about-title">
+      <!-- Left column -->
+      <div class="stack">
+        <section class="card" id="about" aria-labelledby="about-title">
           <div class="pill-label">
-            <span>About</span>
+            <span>Studio overview</span>
           </div>
           <h3 id="about-title">What is Everyday TrueAI?</h3>
           <p>
-            Everyday TrueAI is a human-centered AI brand focused on cutting
-            through hype and confusion. We explore practical, honest ways to
-            use modern AI tools – from content creation and productivity to
-            better day-to-day decision making.
+            Everyday TrueAI is a human-centered AI advisory and consulting studio
+            focused on cutting through hype. The work centers on practical,
+            grounded ways to use modern AI tools across content, operations,
+            decision-making, and everyday productivity.
           </p>
           <ul class="list">
             <li>
               <div class="dot">•</div>
               <div>
-                <span>Real talk.</span> Plain-language guidance you can actually
-                understand.
+                <span>Real talk.</span> Straightforward, plain-language guidance
+                you can actually act on.
               </div>
             </li>
             <li>
               <div class="dot">•</div>
               <div>
                 <span>Real tools.</span> Workflows and setups built on today’s
-                AI platforms.
+                AI platforms, not theory.
               </div>
             </li>
             <li>
               <div class="dot">•</div>
               <div>
-                <span>Real life.</span> Focused on everyday people, not just
-                developers and executives.
+                <span>Real life.</span> Designed for everyday people and
+                working teams—not just developers or executives.
               </div>
             </li>
           </ul>
         </section>
 
-        <section class="card card-alt" aria-labelledby="projects-title">
+        <section class="card" id="services" aria-labelledby="services-title">
           <div class="pill-label">
-            <span>In Development</span>
+            <span>Advisory & consulting</span>
           </div>
-          <h3 id="projects-title">Future directions</h3>
-          <div class="future-grid">
-            <div class="future-tile">
-              <div class="future-tile-title">
-                Creator & productivity workflows
-              </div>
-              <div class="future-tile-body">
-                Exploring how AI can support everyday creativity, side projects,
-                and small business workflows without replacing the human voice.
-              </div>
-            </div>
-            <div class="future-tile">
-              <div class="future-tile-title">
-                Training & simple playbooks
-              </div>
-              <div class="future-tile-body">
-                Turning experiments into clear, step-by-step guides that help
-                people and teams get started with AI in a grounded way.
-              </div>
-            </div>
-            <div class="future-tile">
-              <div class="future-tile-title">
-                Advisory & consulting
-              </div>
-              <div class="future-tile-body">
-                Light-touch guidance for individuals and organizations who want
-                to explore AI responsibly and realistically.
-              </div>
-            </div>
-            <div class="future-tile">
-              <div class="future-tile-title">
-                Everyday experiments
-              </div>
-              <div class="future-tile-body">
-                Small, real-world tests that focus on saving people time,
-                reducing confusion, and making tools feel less intimidating.
-              </div>
-            </div>
-          </div>
-          <div class="chip-row">
-            <span class="chip">Early-stage studio</span>
-            <span class="chip">More to come</span>
-          </div>
-        </section>
-      </div>
-
-      <section class="stack" aria-label="Programs and contact">
-        <section class="card" aria-labelledby="lab-title">
-          <div class="pill-label">
-            <span>Program</span>
-          </div>
-          <h3 id="lab-title">RealWorld AI Lab</h3>
+          <h3 id="services-title">Ways we can work together</h3>
           <p>
-            RealWorld AI Lab is the experimental arm of Everyday TrueAI. It’s
-            where ideas get stress-tested in actual workflows – from solo
-            creators to small teams and organizations.
-          </p>
-          <p style="margin-bottom: 4px; font-size: 0.88rem;">
-            We design and refine practical AI use-cases and playbooks so people
-            can deploy AI with confidence, not guesswork.
+            Offers are deliberately flexible while the studio is in active
+            development. The focus is on light-touch, high-signal support that
+            fits how you already work.
           </p>
           <ul class="list">
             <li>
               <div class="dot">•</div>
               <div>
-                Pilot real-life AI workflows for content, operations, and support.
+                <span>AI workflow reviews.</span> Quick assessments of how AI
+                could support your existing content, operations, or support
+                flows.
               </div>
             </li>
             <li>
               <div class="dot">•</div>
               <div>
-                Learn what works, what breaks, and what actually saves time.
+                <span>Advisory sessions.</span> Short, focused consulting
+                conversations to map realistic next steps and avoid common
+                pitfalls.
               </div>
             </li>
             <li>
               <div class="dot">•</div>
               <div>
-                Turn experiments into simple playbooks and training.
+                <span>Training and playbooks.</span> Simple, practical guides
+                tailored to how you or your team actually work.
               </div>
             </li>
           </ul>
         </section>
+      </div>
 
-        <section class="card contact-card" id="contact" aria-labelledby="contact-title">
+      <!-- Right column -->
+      <div class="stack">
+        <section class="card" id="lab" aria-labelledby="lab-title">
+          <div class="pill-label">
+            <span>RealWorld AI Lab</span>
+          </div>
+          <h3 id="lab-title">Experimental, but applied</h3>
+          <p>
+            RealWorld AI Lab is the experimental arm of Everyday TrueAI. It is
+            where ideas are stress-tested in real workflows—from solo creators
+            to small teams and organizations.
+          </p>
+          <p style="margin-bottom: 4px; font-size: 0.88rem;">
+            The goal is simple: turn experiments into practical tools, patterns,
+            and conversations that help people deploy AI with confidence, not
+            guesswork.
+          </p>
+          <div class="projects">
+            <div>
+              <strong>Creator & productivity workflows</strong>
+              <div style="color: var(--text-sub); font-size: 0.88rem;">
+                Exploring how AI can support creativity, side projects, and
+                small business operations without replacing the human voice.
+              </div>
+            </div>
+            <div>
+              <strong>Training & simple playbooks</strong>
+              <div style="color: var(--text-sub); font-size: 0.88rem;">
+                Turning experiments into step-by-step guides that make starting
+                with AI more approachable.
+              </div>
+            </div>
+            <div>
+              <strong>Light-touch advisory</strong>
+              <div style="color: var(--text-sub); font-size: 0.88rem;">
+                Flexible consulting for individuals and organizations who want
+                to explore AI responsibly and realistically.
+              </div>
+            </div>
+            <div style="margin-top: 4px;">
+              <span class="chip">Early-stage studio</span>
+              <span class="chip">More to come</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="contact" aria-labelledby="contact-title">
           <div class="pill-label">
             <span>Contact</span>
           </div>
-          <h3 id="contact-title">Stay in touch</h3>
+          <h3 id="contact-title">Start a conversation</h3>
           <p>
-            This page is a simple first placeholder while Everyday TrueAI is in
-            active development. If you’d like to connect about future projects,
-            early experiments, or light-touch advisory, you can reach out directly:
+            This page is a simple first version while Everyday TrueAI continues
+            to evolve. If you would like to talk about future projects,
+            collaborations, or advisory work, you can reach out directly.
           </p>
           <p style="margin-bottom: 6px;">
             Email:
-            <a href="mailto:you@example.com" class="contact-link">
+            <a href="mailto:you@example.com" class="inline-link">
               you@example.com
             </a>
           </p>
           <p style="font-size: 0.85rem; color: var(--text-sub);">
-            Replace this email with your preferred contact address or a form link
-            once you’re ready.
+            Swap this email for your preferred contact address or a simple form
+            link once you are ready to open up more formal engagements.
           </p>
         </section>
-      </section>
+      </div>
     </main>
 
     <footer>
@@ -914,9 +610,7 @@
     </footer>
 
     <script>
-      // Simple year auto-update
-      document.getElementById("year").textContent =
-        new Date().getFullYear();
+      document.getElementById("year").textContent = new Date().getFullYear();
     </script>
   </div>
 </body>
