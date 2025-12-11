@@ -11,13 +11,22 @@
   <style>
     :root {
       --bg: #05060a;
+      --bg-soft: #080a10;
       --card-bg: #0f1118;
       --accent: #4fd1c5;
       --accent-soft: rgba(79, 209, 197, 0.12);
+      --accent-strong-soft: rgba(79, 209, 197, 0.22);
       --text-main: #f7fafc;
       --text-sub: #a0aec0;
       --border-soft: #2d3748;
-      --max-width: 960px;
+      --border-strong: rgba(79, 209, 197, 0.56);
+      --max-width: 1040px;
+      --radius-lg: 18px;
+      --radius-md: 16px;
+      --shadow-hero: 0 18px 40px rgba(0, 0, 0, 0.6);
+      --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.55);
+      --shadow-card-hover: 0 18px 36px rgba(0, 0, 0, 0.8);
+      --transition-fast: 160ms ease-out;
     }
 
     * {
@@ -29,7 +38,9 @@
       padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #1a202c 0, #05060a 55%);
+      background:
+        radial-gradient(circle at top, #1a202c 0, #05060a 55%),
+        linear-gradient(160deg, #05060a, #020308);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -44,47 +55,73 @@
       margin: auto;
     }
 
+    /* ---------- HEADER / HERO ---------- */
+
     header {
-      border-radius: 18px;
-      padding: 24px 20px;
-      background: linear-gradient(
-        135deg,
-        rgba(79, 209, 197, 0.16),
-        rgba(79, 209, 197, 0.03)
-      );
-      border: 1px solid rgba(79, 209, 197, 0.35);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      border-radius: var(--radius-lg);
+      padding: 22px 22px 24px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(79, 209, 197, 0.18),
+          rgba(79, 209, 197, 0.04)
+        );
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-hero);
       margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      /* subtle glow stripe */
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(79, 209, 197, 0.16), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.14), transparent 55%);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 1;
     }
 
     .logo-row {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .logo-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      border: 1px solid rgba(79, 209, 197, 0.6);
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(79, 209, 197, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: 0.04em;
-      background: radial-gradient(
-        circle at top,
-        rgba(79, 209, 197, 0.35),
-        transparent 60%
-      );
+      font-weight: 650;
+      font-size: 17px;
+      letter-spacing: 0.06em;
+      background:
+        radial-gradient(circle at top, rgba(79, 209, 197, 0.4), transparent 60%),
+        linear-gradient(145deg, rgba(15, 118, 110, 0.5), rgba(15, 23, 42, 0.95));
+      text-transform: uppercase;
+    }
+
+    .logo-mark span {
+      display: inline-block;
+      transform: translateY(0.5px);
     }
 
     .brand-text h1 {
       font-size: clamp(1.5rem, 3vw, 1.9rem);
-      margin: 0;
+      margin: 0 0 2px 0;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -96,19 +133,31 @@
     }
 
     .hero-main {
-      margin-top: 14px;
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 18px;
+      align-items: flex-end;
     }
 
-    .hero-main h2 {
+    @media (max-width: 768px) {
+      .hero-main {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+    }
+
+    .hero-copy h2 {
       font-size: clamp(1.4rem, 3vw, 1.7rem);
-      margin: 0 0 6px 0;
+      margin: 0 0 8px 0;
     }
 
-    .hero-main p {
+    .hero-copy p {
       margin: 0;
       color: var(--text-sub);
-      max-width: 36rem;
-      line-height: 1.5;
+      max-width: 38rem;
+      line-height: 1.55;
+      font-size: 0.97rem;
     }
 
     .hero-pill {
@@ -118,7 +167,7 @@
       margin-top: 14px;
       padding: 6px 11px;
       border-radius: 999px;
-      background: rgba(15, 118, 110, 0.14);
+      background: rgba(15, 118, 110, 0.16);
       border: 1px solid rgba(79, 209, 197, 0.4);
       font-size: 0.8rem;
       color: var(--text-main);
@@ -132,6 +181,62 @@
       box-shadow: 0 0 10px rgba(79, 209, 197, 0.9);
     }
 
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      justify-self: flex-end;
+    }
+
+    @media (max-width: 768px) {
+      .hero-actions {
+        justify-self: flex-start;
+      }
+    }
+
+    .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 118, 110, 0.9);
+      background:
+        linear-gradient(135deg, rgba(79, 209, 197, 0.9), rgba(56, 189, 248, 0.85));
+      color: #020617;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 0 14px 30px rgba(15, 118, 110, 0.55);
+      transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        filter var(--transition-fast);
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(15, 118, 110, 0.75);
+      filter: brightness(1.03);
+    }
+
+    .secondary-note {
+      font-size: 0.78rem;
+      color: rgba(203, 213, 224, 0.9);
+      max-width: 220px;
+      line-height: 1.5;
+    }
+
+    .secondary-note strong {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ---------- MAIN LAYOUT ---------- */
+
     main {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
@@ -144,12 +249,51 @@
       }
     }
 
+    .stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    /* ---------- CARDS ---------- */
+
     .card {
       background: var(--card-bg);
-      border-radius: 16px;
+      border-radius: var(--radius-md);
       padding: 18px 18px 20px;
       border: 1px solid var(--border-soft);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast),
+        background var(--transition-fast);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at top left,
+        rgba(79, 209, 197, 0.18),
+        transparent 55%
+      );
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-fast);
+    }
+
+    .card:hover {
+      border-color: var(--accent-soft);
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-1px);
+      background: linear-gradient(160deg, var(--card-bg), rgba(15, 23, 42, 0.98));
+    }
+
+    .card:hover::before {
+      opacity: 0.8;
     }
 
     .card h3 {
@@ -176,6 +320,9 @@
       background: var(--accent-soft);
       color: var(--accent);
       margin-bottom: 8px;
+      border: 1px solid rgba(79, 209, 197, 0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .list {
@@ -186,7 +333,7 @@
 
     .list li {
       display: grid;
-      grid-template-columns: 20px minmax(0, 1fr);
+      grid-template-columns: 18px minmax(0, 1fr);
       gap: 6px;
       margin-bottom: 8px;
       font-size: 0.9rem;
@@ -211,6 +358,24 @@
       font-size: 0.9rem;
     }
 
+    .projects-title {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .projects-body {
+      color: var(--text-sub);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .chip-row {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
     .chip {
       display: inline-flex;
       align-items: center;
@@ -220,10 +385,32 @@
       border: 1px solid rgba(160, 174, 192, 0.7);
       font-size: 0.75rem;
       color: var(--text-sub);
+      background-color: rgba(15, 23, 42, 0.9);
     }
 
+    .chip::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      opacity: 0.7;
+    }
+
+    .contact-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- FOOTER ---------- */
+
     footer {
-      margin-top: 24px;
+      margin-top: 26px;
       font-size: 0.8rem;
       color: var(--text-sub);
       display: flex;
@@ -247,153 +434,175 @@
 <body>
   <div class="page">
     <header>
-      <div class="logo-row">
-        <div class="logo-mark">ET</div>
-        <div class="brand-text">
-          <h1>Everyday TrueAI</h1>
-          <div class="tagline">Real talk. Real tools. Real life.</div>
+      <div class="header-inner">
+        <div class="logo-row">
+          <div class="logo-mark" aria-hidden="true">
+            <!-- Change these letters if you ever want a different monogram -->
+            <span>ET</span>
+          </div>
+          <div class="brand-text">
+            <h1>Everyday TrueAI</h1>
+            <div class="tagline">Real talk. Real tools. Real life.</div>
+          </div>
         </div>
-      </div>
-      <div class="hero-main">
-        <h2>A real-world AI lab for everyday people.</h2>
-        <p>
-          Everyday TrueAI helps real people use artificial intelligence with
-          truth, clarity, and confidence in their daily lives and work.
-        </p>
-        <div class="hero-pill">
-          <div class="hero-pill-dot"></div>
-          <div>In early-stage development · Founder-led studio</div>
+
+        <div class="hero-main">
+          <div class="hero-copy">
+            <h2>A real-world AI lab for everyday people.</h2>
+            <p>
+              Everyday TrueAI helps real people use artificial intelligence with
+              truth, clarity, and confidence in their daily lives and work.
+            </p>
+            <div class="hero-pill">
+              <div class="hero-pill-dot"></div>
+              <div>In early-stage development · Founder-led studio</div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="primary-btn" href="#contact">
+              Get in touch
+            </a>
+            <div class="secondary-note">
+              <strong>Human-first AI.</strong> Practical workflows, plain language,
+              and experiments you can actually use.
+            </div>
+          </div>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="card" aria-labelledby="about-title">
-        <div class="pill-label">
-          <span>About</span>
-        </div>
-        <h3 id="about-title">What is Everyday TrueAI?</h3>
-        <p>
-          Everyday TrueAI is a human-centered AI brand focused on cutting
-          through hype and confusion. We explore practical, honest ways to
-          use modern AI tools – from content creation and productivity to
-          better day-to-day decision making.
-        </p>
-        <ul class="list">
-          <li>
-            <div class="dot">•</div>
-            <div>
-              <span>Real talk.</span> Plain-language guidance you can actually
-              understand.
-            </div>
-          </li>
-          <li>
-            <div class="dot">•</div>
-            <div>
-              <span>Real tools.</span> Workflows and setups built on today’s
-              AI platforms.
-            </div>
-          </li>
-          <li>
-            <div class="dot">•</div>
-            <div>
-              <span>Real life.</span> Focused on everyday people, not just
-              developers and executives.
-            </div>
-          </li>
-        </ul>
-      </section>
+      <div class="stack" aria-label="About and future directions">
+        <section class="card" aria-labelledby="about-title">
+          <div class="pill-label">
+            <span>About</span>
+          </div>
+          <h3 id="about-title">What is Everyday TrueAI?</h3>
+          <p>
+            Everyday TrueAI is a human-centered AI brand focused on cutting
+            through hype and confusion. We explore practical, honest ways to
+            use modern AI tools – from content creation and productivity to
+            better day-to-day decision making.
+          </p>
+          <ul class="list">
+            <li>
+              <div class="dot">•</div>
+              <div>
+                <span>Real talk.</span> Plain-language guidance you can actually
+                understand.
+              </div>
+            </li>
+            <li>
+              <div class="dot">•</div>
+              <div>
+                <span>Real tools.</span> Workflows and setups built on today’s
+                AI platforms.
+              </div>
+            </li>
+            <li>
+              <div class="dot">•</div>
+              <div>
+                <span>Real life.</span> Focused on everyday people, not just
+                developers and executives.
+              </div>
+            </li>
+          </ul>
+        </section>
 
-      <section class="card" aria-labelledby="lab-title">
-        <div class="pill-label">
-          <span>Program</span>
-        </div>
-        <h3 id="lab-title">RealWorld AI Lab</h3>
-        <p>
-          RealWorld AI Lab is the experimental arm of Everyday TrueAI. It’s
-          where ideas get stress-tested in actual workflows – from solo
-          creators to small teams and organizations.
-        </p>
-        <p style="margin-bottom: 4px; font-size: 0.88rem;">
-          We design and refine practical AI use-cases and playbooks so people
-          can deploy AI with confidence, not guesswork.
-        </p>
-        <ul class="list">
-          <li>
-            <div class="dot">•</div>
+        <section class="card" aria-labelledby="projects-title">
+          <div class="pill-label">
+            <span>In Development</span>
+          </div>
+          <h3 id="projects-title">Future directions</h3>
+          <div class="projects">
             <div>
-              Pilot real-life AI workflows for content, operations, and support.
+              <div class="projects-title">Creator & productivity workflows</div>
+              <div class="projects-body">
+                Exploring how AI can support everyday creativity, side projects,
+                and small business workflows without replacing the human voice.
+              </div>
             </div>
-          </li>
-          <li>
-            <div class="dot">•</div>
             <div>
-              Learn what works, what breaks, and what actually saves time.
+              <div class="projects-title">Training & simple playbooks</div>
+              <div class="projects-body">
+                Turning experiments into clear, step-by-step guides that help
+                people and teams get started with AI in a grounded way.
+              </div>
             </div>
-          </li>
-          <li>
-            <div class="dot">•</div>
             <div>
-              Turn experiments into simple playbooks and training.
+              <div class="projects-title">Advisory & consulting</div>
+              <div class="projects-body">
+                Light-touch guidance for individuals and organizations who want
+                to explore AI responsibly and realistically.
+              </div>
             </div>
-          </li>
-        </ul>
-      </section>
+            <div class="chip-row">
+              <span class="chip">Early-stage studio</span>
+              <span class="chip">More to come</span>
+            </div>
+          </div>
+        </section>
+      </div>
 
-      <section class="card" aria-labelledby="projects-title">
-        <div class="pill-label">
-          <span>In Development</span>
-        </div>
-        <h3 id="projects-title">Future directions</h3>
-        <div class="projects">
-          <div>
-            <strong>Creator & productivity workflows</strong>
-            <div style="color: var(--text-sub); font-size: 0.88rem;">
-              Exploring how AI can support everyday creativity, side projects,
-              and small business workflows without replacing the human voice.
-            </div>
+      <section class="stack" aria-label="Programs and contact">
+        <section class="card" aria-labelledby="lab-title">
+          <div class="pill-label">
+            <span>Program</span>
           </div>
-          <div>
-            <strong>Training & simple playbooks</strong>
-            <div style="color: var(--text-sub); font-size: 0.88rem;">
-              Turning experiments into clear, step-by-step guides that help
-              people and teams get started with AI in a grounded way.
-            </div>
-          </div>
-          <div>
-            <strong>Advisory & consulting</strong>
-            <div style="color: var(--text-sub); font-size: 0.88rem;">
-              Light-touch guidance for individuals and organizations who want
-              to explore AI responsibly and realistically.
-            </div>
-          </div>
-          <div style="margin-top: 4px;">
-            <span class="chip">Early-stage studio</span>
-            <span class="chip">More to come</span>
-          </div>
-        </div>
-      </section>
+          <h3 id="lab-title">RealWorld AI Lab</h3>
+          <p>
+            RealWorld AI Lab is the experimental arm of Everyday TrueAI. It’s
+            where ideas get stress-tested in actual workflows – from solo
+            creators to small teams and organizations.
+          </p>
+          <p style="margin-bottom: 4px; font-size: 0.88rem;">
+            We design and refine practical AI use-cases and playbooks so people
+            can deploy AI with confidence, not guesswork.
+          </p>
+          <ul class="list">
+            <li>
+              <div class="dot">•</div>
+              <div>
+                Pilot real-life AI workflows for content, operations, and support.
+              </div>
+            </li>
+            <li>
+              <div class="dot">•</div>
+              <div>
+                Learn what works, what breaks, and what actually saves time.
+              </div>
+            </li>
+            <li>
+              <div class="dot">•</div>
+              <div>
+                Turn experiments into simple playbooks and training.
+              </div>
+            </li>
+          </ul>
+        </section>
 
-      <section class="card" aria-labelledby="contact-title">
-        <div class="pill-label">
-          <span>Contact</span>
-        </div>
-        <h3 id="contact-title">Stay in touch</h3>
-        <p>
-          This page is a simple first placeholder while Everyday TrueAI is in
-          active development. If you’d like to connect about future projects,
-          collaborations, or consulting, you can reach out directly:
-        </p>
-        <p style="margin-bottom: 6px;">
-          Email:
-          <a href="mailto:you@example.com" style="color: var(--accent); text-decoration: none;">
-            you@example.com
-          </a>
-        </p>
-        <p style="font-size: 0.85rem; color: var(--text-sub);">
-          Replace this email with your preferred contact address or a form link
-          once you’re ready.
-        </p>
+        <section class="card" id="contact" aria-labelledby="contact-title">
+          <div class="pill-label">
+            <span>Contact</span>
+          </div>
+          <h3 id="contact-title">Stay in touch</h3>
+          <p>
+            This page is a simple first placeholder while Everyday TrueAI is in
+            active development. If you’d like to connect about future projects,
+            collaborations, or consulting, you can reach out directly:
+          </p>
+          <p style="margin-bottom: 6px;">
+            Email:
+            <a href="mailto:you@example.com" class="contact-link">
+              you@example.com
+            </a>
+          </p>
+          <p style="font-size: 0.85rem; color: var(--text-sub);">
+            Replace this email with your preferred contact address or a form link
+            once you’re ready.
+          </p>
+        </section>
       </section>
     </main>
 
