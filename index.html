@@ -10,22 +10,23 @@
   />
   <style>
     :root {
-      --bg: #05060a;
-      --bg-soft: #080a10;
-      --card-bg: #0f1118;
+      --bg: #03040a;
+      --bg-soft: #080a12;
+      --card-bg: #0b0e17;
+      --card-alt-bg: #0f111a;
       --accent: #4fd1c5;
-      --accent-soft: rgba(79, 209, 197, 0.12);
-      --accent-strong-soft: rgba(79, 209, 197, 0.22);
+      --accent-soft: rgba(79, 209, 197, 0.16);
+      --accent-strong-soft: rgba(79, 209, 197, 0.25);
       --text-main: #f7fafc;
       --text-sub: #a0aec0;
       --border-soft: #2d3748;
-      --border-strong: rgba(79, 209, 197, 0.56);
-      --max-width: 1040px;
-      --radius-lg: 18px;
+      --border-strong: rgba(79, 209, 197, 0.6);
+      --max-width: 1100px;
+      --radius-lg: 20px;
       --radius-md: 16px;
-      --shadow-hero: 0 18px 40px rgba(0, 0, 0, 0.6);
-      --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.55);
-      --shadow-card-hover: 0 18px 36px rgba(0, 0, 0, 0.8);
+      --shadow-hero: 0 22px 50px rgba(0, 0, 0, 0.8);
+      --shadow-card: 0 14px 34px rgba(0, 0, 0, 0.7);
+      --shadow-card-hover: 0 20px 44px rgba(0, 0, 0, 0.85);
       --transition-fast: 160ms ease-out;
     }
 
@@ -38,18 +39,46 @@
       padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background:
-        radial-gradient(circle at top, #1a202c 0, #05060a 55%),
-        linear-gradient(160deg, #05060a, #020308);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       align-items: stretch;
       justify-content: center;
+      background: radial-gradient(circle at top, #15192b 0, #03040a 55%),
+        radial-gradient(circle at bottom, #020308 0, #000 55%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ambient gradient blobs */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      filter: blur(68px);
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: -1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    body::before {
+      top: -140px;
+      left: -40px;
+      background: radial-gradient(circle, rgba(79, 209, 197, 0.9), transparent);
+    }
+
+    body::after {
+      bottom: -160px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.85), transparent);
     }
 
     .page {
-      padding: 32px 16px 48px;
+      padding: 32px 16px 52px;
       width: 100%;
       max-width: var(--max-width);
       margin: auto;
@@ -59,30 +88,31 @@
 
     header {
       border-radius: var(--radius-lg);
-      padding: 22px 22px 24px;
+      padding: 22px 22px 26px;
       background:
         linear-gradient(
           135deg,
-          rgba(79, 209, 197, 0.18),
-          rgba(79, 209, 197, 0.04)
+          rgba(15, 23, 42, 0.9),
+          rgba(15, 23, 42, 0.96)
         );
       border: 1px solid var(--border-strong);
       box-shadow: var(--shadow-hero);
-      margin-bottom: 28px;
+      margin-bottom: 30px;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
     }
 
-    header::after {
-      /* subtle glow stripe */
+    header::before {
       content: "";
       position: absolute;
       inset: -40%;
       background:
-        radial-gradient(circle at 0% 0%, rgba(79, 209, 197, 0.16), transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.14), transparent 55%);
-      opacity: 0.5;
+        radial-gradient(circle at 0% 0%, rgba(79, 209, 197, 0.28), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.2), transparent 55%);
+      opacity: 0.55;
       pointer-events: none;
+      mix-blend-mode: screen;
     }
 
     .header-inner {
@@ -93,25 +123,34 @@
     .logo-row {
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
       gap: 12px;
-      margin-bottom: 12px;
     }
 
     .logo-mark {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 14px;
-      border: 1px solid rgba(79, 209, 197, 0.7);
+      border: 1px solid rgba(79, 209, 197, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 650;
       font-size: 17px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       background:
-        radial-gradient(circle at top, rgba(79, 209, 197, 0.4), transparent 60%),
-        linear-gradient(145deg, rgba(15, 118, 110, 0.5), rgba(15, 23, 42, 0.95));
+        radial-gradient(circle at top, rgba(79, 209, 197, 0.45), transparent 60%),
+        linear-gradient(145deg, rgba(15, 118, 110, 0.65), rgba(15, 23, 42, 0.98));
       text-transform: uppercase;
+      box-shadow: 0 12px 28px rgba(15, 118, 110, 0.7);
     }
 
     .logo-mark span {
@@ -120,9 +159,9 @@
     }
 
     .brand-text h1 {
-      font-size: clamp(1.5rem, 3vw, 1.9rem);
+      font-size: clamp(1.55rem, 3.2vw, 1.95rem);
       margin: 0 0 2px 0;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
@@ -132,31 +171,70 @@
       color: var(--text-sub);
     }
 
+    .lab-tag {
+      font-size: 0.8rem;
+      color: rgba(203, 213, 224, 0.9);
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(79, 209, 197, 0.4);
+      background: rgba(10, 14, 25, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .lab-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(79, 209, 197, 0.9);
+    }
+
     .hero-main {
-      margin-top: 12px;
+      margin-top: 10px;
       display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
-      gap: 18px;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.5fr);
+      gap: 22px;
       align-items: flex-end;
     }
 
     @media (max-width: 768px) {
       .hero-main {
         grid-template-columns: minmax(0, 1fr);
-        gap: 14px;
+        gap: 16px;
       }
     }
 
     .hero-copy h2 {
-      font-size: clamp(1.4rem, 3vw, 1.7rem);
-      margin: 0 0 8px 0;
+      font-size: clamp(1.45rem, 3.1vw, 1.8rem);
+      margin: 0 0 10px 0;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-copy h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 56%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        rgba(79, 209, 197, 0.9),
+        rgba(56, 189, 248, 0.2)
+      );
+      opacity: 0.9;
     }
 
     .hero-copy p {
-      margin: 0;
+      margin: 12px 0 0;
       color: var(--text-sub);
-      max-width: 38rem;
-      line-height: 1.55;
+      max-width: 40rem;
+      line-height: 1.6;
       font-size: 0.97rem;
     }
 
@@ -164,13 +242,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-top: 14px;
-      padding: 6px 11px;
+      margin-top: 16px;
+      padding: 7px 12px;
       border-radius: 999px;
-      background: rgba(15, 118, 110, 0.16);
-      border: 1px solid rgba(79, 209, 197, 0.4);
+      background: rgba(12, 52, 61, 0.42);
+      border: 1px solid rgba(79, 209, 197, 0.55);
       font-size: 0.8rem;
       color: var(--text-main);
+      backdrop-filter: blur(12px);
     }
 
     .hero-pill-dot {
@@ -184,13 +263,14 @@
     .hero-actions {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: flex-end;
       gap: 10px;
       justify-self: flex-end;
     }
 
     @media (max-width: 768px) {
       .hero-actions {
+        align-items: flex-start;
         justify-self: flex-start;
       }
     }
@@ -199,18 +279,18 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 9px 18px;
+      padding: 9px 20px;
       border-radius: 999px;
-      border: 1px solid rgba(15, 118, 110, 0.9);
+      border: 1px solid rgba(15, 118, 110, 0.95);
       background:
-        linear-gradient(135deg, rgba(79, 209, 197, 0.9), rgba(56, 189, 248, 0.85));
+        linear-gradient(135deg, rgba(79, 209, 197, 0.96), rgba(56, 189, 248, 0.92));
       color: #020617;
       font-size: 0.9rem;
       font-weight: 600;
       text-decoration: none;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      box-shadow: 0 14px 30px rgba(15, 118, 110, 0.55);
+      box-shadow: 0 18px 38px rgba(15, 118, 110, 0.7);
       transition:
         transform var(--transition-fast),
         box-shadow var(--transition-fast),
@@ -218,16 +298,23 @@
     }
 
     .primary-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 36px rgba(15, 118, 110, 0.75);
-      filter: brightness(1.03);
+      transform: translateY(-1.5px);
+      box-shadow: 0 24px 46px rgba(15, 118, 110, 0.9);
+      filter: brightness(1.04);
     }
 
     .secondary-note {
       font-size: 0.78rem;
       color: rgba(203, 213, 224, 0.9);
-      max-width: 220px;
+      max-width: 235px;
       line-height: 1.5;
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .secondary-note {
+        text-align: left;
+      }
     }
 
     .secondary-note strong {
@@ -240,7 +327,7 @@
     main {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
-      gap: 20px;
+      gap: 22px;
     }
 
     @media (max-width: 768px) {
@@ -277,7 +364,7 @@
       inset: 0;
       background: radial-gradient(
         circle at top left,
-        rgba(79, 209, 197, 0.18),
+        rgba(79, 209, 197, 0.24),
         transparent 55%
       );
       opacity: 0;
@@ -293,7 +380,16 @@
     }
 
     .card:hover::before {
-      opacity: 0.8;
+      opacity: 0.75;
+    }
+
+    .card-alt {
+      background: radial-gradient(
+          circle at top left,
+          rgba(79, 209, 197, 0.18),
+          transparent 55%
+        ),
+        var(--card-alt-bg);
     }
 
     .card h3 {
@@ -306,7 +402,7 @@
       margin-top: 0;
       margin-bottom: 10px;
       color: var(--text-sub);
-      line-height: 1.5;
+      line-height: 1.55;
       font-size: 0.93rem;
     }
 
@@ -320,7 +416,7 @@
       background: var(--accent-soft);
       color: var(--accent);
       margin-bottom: 8px;
-      border: 1px solid rgba(79, 209, 197, 0.45);
+      border: 1px solid rgba(79, 209, 197, 0.5);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -351,26 +447,54 @@
       opacity: 0.7;
     }
 
-    .projects {
+    /* Future directions as mini grid */
+    .future-grid {
       display: grid;
-      gap: 8px;
-      margin-top: 4px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .future-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .future-tile {
+      padding: 10px 11px;
+      border-radius: 12px;
+      border: 1px solid rgba(45, 55, 72, 0.9);
+      background: rgba(9, 12, 20, 0.98);
       font-size: 0.9rem;
+      display: grid;
+      gap: 3px;
+      transition:
+        border-color var(--transition-fast),
+        background var(--transition-fast),
+        transform var(--transition-fast);
     }
 
-    .projects-title {
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .projects-body {
-      color: var(--text-sub);
+    .future-tile-title {
       font-size: 0.88rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .future-tile-body {
+      color: var(--text-sub);
+      font-size: 0.83rem;
       line-height: 1.5;
     }
 
+    .future-tile:hover {
+      border-color: var(--accent-soft);
+      background: #0e1523;
+      transform: translateY(-0.5px);
+    }
+
     .chip-row {
-      margin-top: 6px;
+      margin-top: 8px;
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
@@ -385,7 +509,7 @@
       border: 1px solid rgba(160, 174, 192, 0.7);
       font-size: 0.75rem;
       color: var(--text-sub);
-      background-color: rgba(15, 23, 42, 0.9);
+      background-color: rgba(15, 23, 42, 0.92);
     }
 
     .chip::before {
@@ -407,10 +531,21 @@
       text-decoration: underline;
     }
 
+    /* Contact card highlight */
+    .contact-card {
+      border-color: var(--accent-strong-soft);
+      background: radial-gradient(
+          circle at top left,
+          rgba(79, 209, 197, 0.24),
+          transparent 55%
+        ),
+        rgba(8, 11, 20, 0.98);
+    }
+
     /* ---------- FOOTER ---------- */
 
     footer {
-      margin-top: 26px;
+      margin-top: 28px;
       font-size: 0.8rem;
       color: var(--text-sub);
       display: flex;
@@ -436,13 +571,19 @@
     <header>
       <div class="header-inner">
         <div class="logo-row">
-          <div class="logo-mark" aria-hidden="true">
-            <!-- Change these letters if you ever want a different monogram -->
-            <span>ET</span>
+          <div class="logo-group">
+            <div class="logo-mark" aria-hidden="true">
+              <!-- Change these letters if you ever want a different monogram -->
+              <span>ET</span>
+            </div>
+            <div class="brand-text">
+              <h1>Everyday TrueAI</h1>
+              <div class="tagline">Real talk. Real tools. Real life.</div>
+            </div>
           </div>
-          <div class="brand-text">
-            <h1>Everyday TrueAI</h1>
-            <div class="tagline">Real talk. Real tools. Real life.</div>
+          <div class="lab-tag">
+            <span class="lab-tag-dot"></span>
+            <span>RealWorld AI Lab · Detroit</span>
           </div>
         </div>
 
@@ -465,7 +606,7 @@
             </a>
             <div class="secondary-note">
               <strong>Human-first AI.</strong> Practical workflows, plain language,
-              and experiments you can actually use.
+              and experiments you can actually use in real life.
             </div>
           </div>
         </div>
@@ -510,37 +651,52 @@
           </ul>
         </section>
 
-        <section class="card" aria-labelledby="projects-title">
+        <section class="card card-alt" aria-labelledby="projects-title">
           <div class="pill-label">
             <span>In Development</span>
           </div>
           <h3 id="projects-title">Future directions</h3>
-          <div class="projects">
-            <div>
-              <div class="projects-title">Creator & productivity workflows</div>
-              <div class="projects-body">
+          <div class="future-grid">
+            <div class="future-tile">
+              <div class="future-tile-title">
+                Creator & productivity workflows
+              </div>
+              <div class="future-tile-body">
                 Exploring how AI can support everyday creativity, side projects,
                 and small business workflows without replacing the human voice.
               </div>
             </div>
-            <div>
-              <div class="projects-title">Training & simple playbooks</div>
-              <div class="projects-body">
+            <div class="future-tile">
+              <div class="future-tile-title">
+                Training & simple playbooks
+              </div>
+              <div class="future-tile-body">
                 Turning experiments into clear, step-by-step guides that help
                 people and teams get started with AI in a grounded way.
               </div>
             </div>
-            <div>
-              <div class="projects-title">Advisory & consulting</div>
-              <div class="projects-body">
+            <div class="future-tile">
+              <div class="future-tile-title">
+                Advisory & consulting
+              </div>
+              <div class="future-tile-body">
                 Light-touch guidance for individuals and organizations who want
                 to explore AI responsibly and realistically.
               </div>
             </div>
-            <div class="chip-row">
-              <span class="chip">Early-stage studio</span>
-              <span class="chip">More to come</span>
+            <div class="future-tile">
+              <div class="future-tile-title">
+                Everyday experiments
+              </div>
+              <div class="future-tile-body">
+                Small, real-world tests that focus on saving people time,
+                reducing confusion, and making tools feel less intimidating.
+              </div>
             </div>
+          </div>
+          <div class="chip-row">
+            <span class="chip">Early-stage studio</span>
+            <span class="chip">More to come</span>
           </div>
         </section>
       </div>
@@ -582,7 +738,7 @@
           </ul>
         </section>
 
-        <section class="card" id="contact" aria-labelledby="contact-title">
+        <section class="card contact-card" id="contact" aria-labelledby="contact-title">
           <div class="pill-label">
             <span>Contact</span>
           </div>
@@ -590,7 +746,7 @@
           <p>
             This page is a simple first placeholder while Everyday TrueAI is in
             active development. If you’d like to connect about future projects,
-            collaborations, or consulting, you can reach out directly:
+            early experiments, or light-touch advisory, you can reach out directly:
           </p>
           <p style="margin-bottom: 6px;">
             Email:
