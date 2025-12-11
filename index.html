@@ -264,7 +264,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 10px;
+      gap: 12px;
       justify-self: flex-end;
     }
 
@@ -274,6 +274,137 @@
         justify-self: flex-start;
       }
     }
+
+    /* ---------- HERO VISUAL (TECH NODE GRAPHIC) ---------- */
+
+    .hero-visual {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 18px;
+      padding: 10px 10px 12px;
+      background: radial-gradient(
+          circle at top left,
+          rgba(79, 209, 197, 0.18),
+          transparent 55%
+        ),
+        rgba(10, 14, 25, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-visual-inner {
+      position: relative;
+      border-radius: 14px;
+      background: radial-gradient(
+        circle at 30% 0%,
+        rgba(79, 209, 197, 0.32),
+        transparent 60%
+      );
+      background-color: #020617;
+      height: 150px;
+      overflow: hidden;
+    }
+
+    .hv-orbit {
+      position: absolute;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      transform-origin: center;
+    }
+
+    .hv-orbit-1 {
+      width: 130px;
+      height: 130px;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-style: dashed;
+      opacity: 0.8;
+    }
+
+    .hv-orbit-2 {
+      width: 90px;
+      height: 90px;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-style: solid;
+      border-color: rgba(79, 209, 197, 0.75);
+      opacity: 0.9;
+    }
+
+    .hv-core {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background:
+        radial-gradient(circle, rgba(79, 209, 197, 1), rgba(59, 130, 246, 0.3));
+      box-shadow:
+        0 0 14px rgba(79, 209, 197, 0.9),
+        0 0 32px rgba(59, 130, 246, 0.6);
+    }
+
+    .hv-node {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.9);
+      box-shadow: 0 0 10px rgba(148, 163, 184, 0.9);
+    }
+
+    .hv-node-1 {
+      top: 36px;
+      left: 54%;
+      transform: translateX(-50%);
+      background: rgba(96, 165, 250, 0.95);
+      box-shadow: 0 0 12px rgba(96, 165, 250, 0.9);
+    }
+
+    .hv-node-2 {
+      bottom: 34px;
+      left: 32%;
+    }
+
+    .hv-node-3 {
+      bottom: 26px;
+      right: 22%;
+      background: rgba(45, 212, 191, 0.95);
+      box-shadow: 0 0 12px rgba(45, 212, 191, 0.9);
+    }
+
+    .hero-visual-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(148, 163, 184, 0.1),
+        rgba(148, 163, 184, 0.8),
+        rgba(148, 163, 184, 0.1)
+      );
+      left: 16px;
+      right: 16px;
+      top: 50%;
+      opacity: 0.7;
+    }
+
+    .hero-visual-caption {
+      margin-top: 6px;
+      font-size: 0.72rem;
+      color: rgba(203, 213, 224, 0.9);
+      text-align: left;
+    }
+
+    .hero-visual-caption span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ---------- CTA + NOTE ---------- */
 
     .primary-btn {
       display: inline-flex;
@@ -601,6 +732,21 @@
           </div>
 
           <div class="hero-actions">
+            <div class="hero-visual" aria-hidden="true">
+              <div class="hero-visual-inner">
+                <div class="hv-orbit hv-orbit-1"></div>
+                <div class="hv-orbit hv-orbit-2"></div>
+                <div class="hero-visual-line"></div>
+                <div class="hv-core"></div>
+                <div class="hv-node hv-node-1"></div>
+                <div class="hv-node hv-node-2"></div>
+                <div class="hv-node hv-node-3"></div>
+              </div>
+              <div class="hero-visual-caption">
+                Everyday systems, <span>linked by AI</span> instead of hype.
+              </div>
+            </div>
+
             <a class="primary-btn" href="#contact">
               Get in touch
             </a>
