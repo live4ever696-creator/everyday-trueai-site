@@ -63,8 +63,10 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      min-width: 0;
     }
 
+    /* we keep .logo-mark in case you want it later, but we don't use it now */
     .logo-mark {
       width: 36px;
       height: 36px;
@@ -86,8 +88,14 @@
 
     .brand-logo {
       display: block;
-      height: 26px; /* adjust to fit your logo */
+      height: 56px;          /* ⬅️ bigger logo */
       width: auto;
+    }
+
+    @media (max-width: 480px) {
+      .brand-logo {
+        height: 48px;        /* slightly smaller on tiny screens */
+      }
     }
 
     .brand-text .tagline {
@@ -409,14 +417,13 @@
     <!-- Top navigation -->
     <div class="nav">
       <div class="logo-row">
-        <div class="logo-mark">ET</div>
+        <!-- Big PNG logo -->
+        <img
+          src="images/ET_LOGO.png"
+          alt="Everyday TrueAI logo"
+          class="brand-logo"
+        >
         <div class="brand-text">
-          <!-- IMAGE 0: COMPANY LOGO IMAGE replacing text name -->
-          <img
-            src="images/ET_LOGO.png"
-            alt="Everyday TrueAI logo"
-            class="brand-logo"
-          >
           <div class="tagline">Real talk. Real tools. Real decisions.</div>
         </div>
       </div>
@@ -449,14 +456,12 @@
 
       <div class="hero-image" aria-hidden="true">
         <div class="hero-image-overlay">
-
           <!-- IMAGE 1: Main hero illustration -->
           <img
             src="images/From_Banna1.png"
             alt="Futuristic, diverse team collaborating with AI"
             style="width: 100%; border-radius: 14px; margin-bottom: 10px; object-fit: cover;"
           >
-
           <div class="hero-image-badge">
             <span>RealWorld AI Lab</span>
             <span>In active development</span>
@@ -621,7 +626,7 @@
           <p style="margin-bottom: 6px;">
             Email:
             <a href="mailto:you@example.com" class="inline-link">
-              [you@example.com](mailto:you@example.com)
+              you@example.com
             </a>
           </p>
           <p style="font-size: 0.85rem; color: var(--text-sub);">
