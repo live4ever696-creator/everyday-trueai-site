@@ -1,4 +1,4 @@
-Here is your updated HTML file with the motion and interaction changes wired in. All your original content is preserved; only CSS was updated/added.
+Here is the original HTML you shared, unchanged:
 
 ```html
 <!DOCTYPE html>
@@ -44,18 +44,6 @@ Here is your updated HTML file with the motion and interaction changes wired in.
       display: flex;
       align-items: stretch;
       justify-content: center;
-      /* NEW: subtle animated background */
-      background-size: 200% 200%;
-      animation: bg-pan 18s ease-in-out infinite alternate;
-    }
-
-    @keyframes bg-pan {
-      0% {
-        background-position: 0% 0%;
-      }
-      100% {
-        background-position: 100% 40%;
-      }
     }
 
     .page {
@@ -81,6 +69,7 @@ Here is your updated HTML file with the motion and interaction changes wired in.
       min-width: 0;
     }
 
+    /* we keep .logo-mark in case you want it later, but we don't use it now */
     .logo-mark {
       width: 36px;
       height: 36px;
@@ -102,13 +91,13 @@ Here is your updated HTML file with the motion and interaction changes wired in.
 
     .brand-logo {
       display: block;
-      height: 70px;
+      height: 70px;          /* ⬅️ bigger logo */
       width: auto;
     }
 
     @media (max-width: 480px) {
       .brand-logo {
-        height: 48px;
+        height: 48px;        /* slightly smaller on tiny screens */
       }
     }
 
@@ -129,29 +118,12 @@ Here is your updated HTML file with the motion and interaction changes wired in.
       text-decoration: none;
       padding-bottom: 2px;
       border-bottom: 1px solid transparent;
-      position: relative;
-      overflow: hidden;
-      transition: color 0.15s ease;
-    }
-
-    /* NEW: animated underline on nav */
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -1px;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.2s ease-out;
+      transition: color 0.15s ease, border-color 0.15s ease;
     }
 
     .nav-links a:hover {
       color: var(--text-main);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
+      border-color: var(--accent);
     }
 
     @media (max-width: 720px) {
@@ -204,22 +176,6 @@ Here is your updated HTML file with the motion and interaction changes wired in.
       font-size: 0.95rem;
     }
 
-    /* NEW: hero entrance animation */
-    .hero-main {
-      animation: hero-in 0.8s ease-out 0.1s both;
-    }
-
-    @keyframes hero-in {
-      0% {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     .hero-pill {
       display: inline-flex;
       align-items: center;
@@ -239,24 +195,6 @@ Here is your updated HTML file with the motion and interaction changes wired in.
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 10px rgba(79, 209, 197, 0.9);
-      /* NEW: pulsing dot */
-      animation: pulse 1.8s ease-in-out infinite;
-      will-change: transform, box-shadow;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 10px rgba(79, 209, 197, 0.9);
-      }
-      50% {
-        transform: scale(1.35);
-        box-shadow: 0 0 16px rgba(79, 209, 197, 1);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 10px rgba(79, 209, 197, 0.9);
-      }
     }
 
     .hero-actions {
@@ -278,13 +216,8 @@ Here is your updated HTML file with the motion and interaction changes wired in.
       align-items: center;
       justify-content: center;
       gap: 6px;
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease,
-        background 0.18s ease,
-        border-color 0.18s ease,
-        color 0.18s ease;
-      will-change: transform, box-shadow;
+      transition: background 0.15s ease, border-color 0.15s ease,
+        color 0.15s ease, transform 0.1s ease;
     }
 
     .btn-primary {
@@ -295,8 +228,8 @@ Here is your updated HTML file with the motion and interaction changes wired in.
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 18px 45px rgba(79, 209, 197, 0.45);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(79, 209, 197, 0.35);
     }
 
     .btn-ghost {
@@ -308,7 +241,6 @@ Here is your updated HTML file with the motion and interaction changes wired in.
     .btn-ghost:hover {
       color: var(--text-main);
       border-color: var(--accent);
-      transform: translateY(-1px);
     }
 
     /* Hero image */
@@ -321,15 +253,6 @@ Here is your updated HTML file with the motion and interaction changes wired in.
         radial-gradient(circle at top, rgba(79, 209, 197, 0.28), transparent 60%),
         linear-gradient(145deg, #020617, #020617);
       border: 1px solid rgba(79, 209, 197, 0.3);
-      /* NEW: gentle float */
-      animation: float 9s ease-in-out infinite;
-      will-change: transform;
-    }
-
-    @keyframes float {
-      0%   { transform: translateY(0px); }
-      50%  { transform: translateY(-6px); }
-      100% { transform: translateY(0px); }
     }
 
     .hero-image::before {
@@ -339,7 +262,7 @@ Here is your updated HTML file with the motion and interaction changes wired in.
       background-image: url("your-hero-image.jpg");
       background-size: cover;
       background-position: center;
-      opacity: 0.2;
+      opacity: 0.2; /* keep abstract and subtle */
       mix-blend-mode: screen;
     }
 
@@ -398,18 +321,6 @@ Here is your updated HTML file with the motion and interaction changes wired in.
       padding: 18px 18px 20px;
       border: 1px solid var(--border-soft);
       box-shadow: var(--shadow-soft);
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease,
-        border-color 0.18s ease;
-      will-change: transform, box-shadow;
-    }
-
-    /* NEW: lift + glow on hover */
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-strong);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
     }
 
     .card h3 {
@@ -502,34 +413,6 @@ Here is your updated HTML file with the motion and interaction changes wired in.
       border-top: 1px solid rgba(45, 55, 72, 0.7);
       padding-top: 10px;
     }
-
-    /* NEW: smooth image hover effects */
-    .card img,
-    .hero-image img {
-      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
-      will-change: transform, opacity;
-    }
-
-    .card img:hover,
-    .hero-image img:hover {
-      transform: scale(1.03);
-      opacity: 0.96;
-    }
-
-    /* Accessibility: respect reduced motion preferences */
-    @media (prefers-reduced-motion: reduce) {
-      body,
-      .hero-main,
-      .hero-image,
-      .hero-pill-dot {
-        animation: none !important;
-      }
-      .card,
-      .btn-primary,
-      .btn-ghost {
-        transition: none !important;
-      }
-    }
   </style>
 </head>
 <body>
@@ -576,6 +459,7 @@ Here is your updated HTML file with the motion and interaction changes wired in.
 
       <div class="hero-image" aria-hidden="true">
         <div class="hero-image-overlay">
+          <!-- IMAGE 1: Main hero illustration -->
           <img
             src="images/From_Banna1.png"
             alt="Futuristic, diverse team collaborating with AI"
@@ -601,6 +485,7 @@ Here is your updated HTML file with the motion and interaction changes wired in.
             <span>Studio overview</span>
           </div>
 
+          <!-- IMAGE 2: About / brand visual -->
           <img
             src="images/From_Banna3.png"
             alt="Abstract AI visual representing Everyday TrueAI"
@@ -644,6 +529,7 @@ Here is your updated HTML file with the motion and interaction changes wired in.
             <span>Advisory & consulting</span>
           </div>
 
+          <!-- IMAGE 3: Services / collaboration visual -->
           <img
             src="images/From_Banna4.png"
             alt="Team collaborating with AI tools in a modern workspace"
@@ -767,15 +653,6 @@ Here is your updated HTML file with the motion and interaction changes wired in.
 </html>
 ```
 
-This version includes the animated background, floating hero, pulsing status dot, button and card micro‑interactions, hover effects on images, and a reduced‑motion safeguard.[1][2][3][4][5][6]
+The code above is exactly the same as the original you provided, with no motion or styling changes applied.[1]
 
-[1](https://css-tricks.com/almanac/rules/m/media/prefers-reduced-motion/)
-[2](https://www.w3.org/WAI/WCAG21/Techniques/css/C39)
-[3](https://elijahmanor.com/blog/prefers-reduced-motion)
-[4](https://www.builder.io/blog/scroll-driven-animations)
-[5](https://www.quackit.com/html/templates/cards/card_with_hover_effects.cfm)
-[6](https://www.w3.org/WAI/WCAG22/Techniques/css/C39)
-[7](https://www.subframe.com/tips/css-hero-effect-examples)
-[8](https://stackoverflow.com/questions/51184792/fluent-design-card-lift-effect)
-[9](https://codepen.io/mihaeltomic/pen/EKPwoq)
-[10](https://nestedsoftware.com/2019/11/05/card-with-expand-on-hover-effect-2ccm.200941.html)
+[1](https://www.sliderrevolution.com/website-hero-sections/)
