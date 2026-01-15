@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Everyday TrueAI · Advisory Studio · KaiVista Labs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Everyday TrueAI – A flexible AI advisory and consulting studio for real people, teams, and small businesses. Powered by KaiVista Labs prototyping."
+    content="Everyday TrueAI – A flexible AI advisory and consulting studio for real people, teams, and small businesses. Powered by KaiVista Labs prototyping and practical IT support."
   />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.everydaytrueai.com/" />
+
+  <!-- Open Graph (link previews for most platforms) -->
+  <meta property="og:title" content="Everyday TrueAI · Advisory Studio · KaiVista Labs" />
+  <meta
+    property="og:description"
+    content="Practical AI advisory and consulting for real people, teams, and small businesses—powered by KaiVista Labs prototyping."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.everydaytrueai.com/" />
+  <meta property="og:image" content="https://www.everydaytrueai.com/images/social-preview-1200x630.png" />
+
+  <!-- Twitter/X (optional polish; safe even if you never use X) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Everyday TrueAI · Advisory Studio · KaiVista Labs" />
+  <meta
+    name="twitter:description"
+    content="Practical AI advisory and consulting for real people, teams, and small businesses—powered by KaiVista Labs prototyping."
+  />
+  <meta name="twitter:image" content="https://www.everydaytrueai.com/images/social-preview-1200x630.png" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Nice-to-have for some browsers -->
+  <meta name="theme-color" content="#05060a" />
+
   <style>
     :root {
       --bg: #05060a;
@@ -25,9 +58,11 @@
       --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.7);
       --shadow-soft: 0 14px 30px rgba(0, 0, 0, 0.55);
     }
+
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       padding: 0;
@@ -40,12 +75,14 @@
       align-items: stretch;
       justify-content: center;
     }
+
     .page {
       padding: 24px 16px 48px;
       width: 100%;
       max-width: var(--max-width);
       margin: auto;
     }
+
     /* Top nav */
     .nav {
       display: flex;
@@ -54,12 +91,14 @@
       margin-bottom: 18px;
       gap: 16px;
     }
+
     .logo-row {
       display: flex;
       align-items: center;
       gap: 10px;
       min-width: 0;
     }
+
     /* we keep .logo-mark in case you want it later, but we don't use it now */
     .logo-mark {
       width: 36px;
@@ -72,33 +111,38 @@
       font-weight: 600;
       font-size: 18px;
       letter-spacing: 0.04em;
-      background: radial-gradient(
-        circle at top,
-        rgba(79, 209, 197, 0.35),
-        transparent 60%
-      );
+      background: radial-gradient(circle at top,
+          rgba(79, 209, 197, 0.35),
+          transparent 60%);
       flex-shrink: 0;
     }
+
     .brand-logo {
       display: block;
-      height: 70px;          /* ⬅️ bigger logo */
+      height: 70px;
+      /* ⬅️ bigger logo */
       width: auto;
     }
+
     @media (max-width: 480px) {
       .brand-logo {
-        height: 48px;        /* slightly smaller on tiny screens */
+        height: 48px;
+        /* slightly smaller on tiny screens */
       }
     }
+
     .brand-text .tagline {
       font-size: 0.92rem;
       margin-top: 2px;
       color: var(--text-sub);
     }
+
     .nav-links {
       display: flex;
       gap: 18px;
       font-size: 0.9rem;
     }
+
     .nav-links a {
       color: var(--text-sub);
       text-decoration: none;
@@ -106,31 +150,33 @@
       border-bottom: 1px solid transparent;
       transition: color 0.15s ease, border-color 0.15s ease;
     }
+
     .nav-links a:hover {
       color: var(--text-main);
       border-color: var(--accent);
     }
+
     @media (max-width: 720px) {
       .nav {
         flex-direction: column;
         align-items: flex-start;
       }
+
       .nav-links {
         width: 100%;
         justify-content: flex-start;
         flex-wrap: wrap;
       }
     }
+
     /* Hero with image */
     header {
       border-radius: var(--radius-lg);
       padding: 24px 22px 24px;
       background:
-        linear-gradient(
-          135deg,
+        linear-gradient(135deg,
           rgba(79, 209, 197, 0.16),
-          rgba(79, 209, 197, 0.03)
-        );
+          rgba(79, 209, 197, 0.03));
       border: 1px solid rgba(79, 209, 197, 0.35);
       box-shadow: var(--shadow-strong);
       margin-bottom: 30px;
@@ -139,15 +185,18 @@
       gap: 20px;
       align-items: center;
     }
+
     @media (max-width: 880px) {
       header {
         grid-template-columns: minmax(0, 1fr);
       }
     }
+
     .hero-main h2 {
       font-size: clamp(1.6rem, 3vw, 2rem);
       margin: 0 0 8px 0;
     }
+
     .hero-main p {
       margin: 0;
       color: var(--text-sub);
@@ -155,6 +204,7 @@
       line-height: 1.6;
       font-size: 0.95rem;
     }
+
     .hero-pill {
       display: inline-flex;
       align-items: center;
@@ -167,6 +217,7 @@
       font-size: 0.8rem;
       color: var(--text-main);
     }
+
     .hero-pill-dot {
       width: 8px;
       height: 8px;
@@ -174,12 +225,14 @@
       background: var(--accent);
       box-shadow: 0 0 10px rgba(79, 209, 197, 0.9);
     }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 18px;
     }
+
     .btn-primary,
     .btn-ghost {
       border-radius: 999px;
@@ -195,25 +248,30 @@
       transition: background 0.15s ease, border-color 0.15s ease,
         color 0.15s ease, transform 0.1s ease;
     }
+
     .btn-primary {
       background: var(--accent);
       color: #021012;
       border-color: var(--accent);
       font-weight: 600;
     }
+
     .btn-primary:hover {
       transform: translateY(-1px);
       box-shadow: 0 10px 30px rgba(79, 209, 197, 0.35);
     }
+
     .btn-ghost {
       background: rgba(15, 23, 42, 0.7);
       border-color: rgba(148, 163, 184, 0.5);
       color: var(--text-sub);
     }
+
     .btn-ghost:hover {
       color: var(--text-main);
       border-color: var(--accent);
     }
+
     /* Hero image */
     .hero-image {
       position: relative;
@@ -225,6 +283,7 @@
         linear-gradient(145deg, #020617, #020617);
       border: 1px solid rgba(79, 209, 197, 0.3);
     }
+
     .hero-image::before {
       content: "";
       position: absolute;
@@ -232,9 +291,11 @@
       background-image: url("your-hero-image.jpg");
       background-size: cover;
       background-position: center;
-      opacity: 0.2; /* keep abstract and subtle */
+      opacity: 0.2;
+      /* keep abstract and subtle */
       mix-blend-mode: screen;
     }
+
     .hero-image-overlay {
       position: relative;
       z-index: 1;
@@ -244,6 +305,7 @@
       justify-content: space-between;
       height: 100%;
     }
+
     .hero-image-badge {
       display: inline-flex;
       align-items: center;
@@ -256,6 +318,7 @@
       border: 1px solid rgba(148, 163, 184, 0.5);
       backdrop-filter: blur(6px);
     }
+
     .hero-image-text {
       margin-top: auto;
       font-size: 0.8rem;
@@ -263,21 +326,25 @@
       max-width: 17rem;
       line-height: 1.45;
     }
+
     /* Main layout */
     main {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.6fr);
       gap: 20px;
     }
+
     @media (max-width: 880px) {
       main {
         grid-template-columns: minmax(0, 1fr);
       }
     }
+
     .stack {
       display: grid;
       gap: 16px;
     }
+
     .card {
       background: var(--card-bg);
       border-radius: var(--radius-md);
@@ -285,11 +352,13 @@
       border: 1px solid var(--border-soft);
       box-shadow: var(--shadow-soft);
     }
+
     .card h3 {
       font-size: 1rem;
       margin-top: 0;
       margin-bottom: 6px;
     }
+
     .card p {
       margin-top: 0;
       margin-bottom: 10px;
@@ -297,6 +366,7 @@
       line-height: 1.5;
       font-size: 0.93rem;
     }
+
     .pill-label {
       display: inline-flex;
       align-items: center;
@@ -308,11 +378,13 @@
       color: var(--accent);
       margin-bottom: 8px;
     }
+
     .list {
       list-style: none;
       padding: 0;
       margin: 6px 0 0;
     }
+
     .list li {
       display: grid;
       grid-template-columns: 18px minmax(0, 1fr);
@@ -321,21 +393,25 @@
       font-size: 0.9rem;
       color: var(--text-sub);
     }
+
     .list li span {
       color: var(--text-main);
       font-weight: 500;
     }
+
     .dot {
       margin-top: 4px;
       font-size: 0.7rem;
       opacity: 0.7;
     }
+
     .projects {
       display: grid;
       gap: 8px;
       margin-top: 4px;
       font-size: 0.9rem;
     }
+
     .chip {
       display: inline-flex;
       align-items: center;
@@ -346,13 +422,16 @@
       font-size: 0.75rem;
       color: var(--text-sub);
     }
+
     .inline-link {
       color: var(--accent);
       text-decoration: none;
     }
+
     .inline-link:hover {
       text-decoration: underline;
     }
+
     footer {
       margin-top: 26px;
       font-size: 0.8rem;
@@ -366,17 +445,14 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <!-- Top navigation -->
     <div class="nav">
       <div class="logo-row">
         <!-- Big PNG logo -->
-        <img
-          src="images/ET_AI_Color_ On_White_ Flat.jpg"
-          alt="Everyday TrueAI logo"
-          class="brand-logo"
-        >
+        <img src="images/ET_AI_Color_ On_White_ Flat.jpg" alt="Everyday TrueAI logo" class="brand-logo">
         <div class="brand-text">
           <div class="tagline">Real talk. Real tools. Real decisions.</div>
         </div>
@@ -396,14 +472,15 @@
           <div class="hero-pill-dot"></div>
           <div>Independent AI advisory · Early-stage studio</div>
         </div>
-        <h2>A flexible AI consulting and advisory partner for everyday work.</h2>
+        <h2>A flexible AI consulting and advisory partner for everyday work—designed for real people, teams, and small
+          businesses.</h2>
         <p>
           Everyday TrueAI helps real people, teams, and small businesses use
           artificial intelligence with truth, clarity, and confidence—without
           the hype or hand-waving.
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn-primary">Request a quick call</a>
+          <a href="#contact" class="btn-primary">Start a no-pressure conversation</a>
           <a href="#services" class="btn-ghost">Explore how we can help</a>
         </div>
       </div>
@@ -411,11 +488,8 @@
       <div class="hero-image" aria-hidden="true">
         <div class="hero-image-overlay">
           <!-- IMAGE 1: Main hero illustration -->
-          <img
-            src="images/ET_AI_3D_BlackImage.jpg"
-            alt="Futuristic, diverse team collaborating with AI"
-            style="width: 100%; border-radius: 14px; margin-bottom: 10px; object-fit: cover;"
-          >
+          <img src="images/ET_AI_3D_BlackImage.jpg" alt="Futuristic, diverse team collaborating with AI"
+            style="width: 100%; border-radius: 14px; margin-bottom: 10px; object-fit: cover;">
           <div class="hero-image-badge">
             <span>KaiVista Labs</span>
             <span>In active development</span>
@@ -437,11 +511,8 @@
           </div>
 
           <!-- IMAGE 2: About / brand visual -->
-          <img
-            src="images/From_Banna3.png"
-            alt="Abstract AI visual representing Everyday TrueAI"
-            style="width: 100%; max-width: 420px; border-radius: 12px; margin-bottom: 12px; display: block;"
-          >
+          <img src="images/From_Banna3.png" alt="Abstract AI visual representing Everyday TrueAI"
+            style="width: 100%; max-width: 420px; border-radius: 12px; margin-bottom: 12px; display: block;">
 
           <h3 id="about-title">What is Everyday TrueAI?</h3>
           <p>
@@ -449,6 +520,22 @@
             We help people and teams use modern AI in practical, grounded ways—across content, operations,
             decision-making, and everyday productivity.
           </p>
+          <div style="height: 10px;"></div>
+          <div style="border-top: 1px solid rgba(45, 55, 72, 0.7); padding-top: 12px;">
+            <div style="color: var(--text-main); font-weight: 600; margin-bottom: 6px;">
+              Service scope
+            </div>
+            <p style="margin-bottom: 0;">
+              Everyday TrueAI provides practical, outcomes-focused technology services spanning AI enablement and IT
+              infrastructure support.
+              We help people and teams adopt modern AI workflows where it truly fits, and we also deliver hands-on
+              technical support—including
+              endpoint troubleshooting, Microsoft 365/Windows administration, and onsite “smart hands” field
+              support—when reliable systems are the priority.
+              Our approach is simple: stabilize the foundation first, then layer in automation and AI to improve
+              clarity, efficiency, and results.
+            </p>
+          </div>
 
           <ul class="list">
             <li>
@@ -475,11 +562,17 @@
 
           <div style="border-top: 1px solid rgba(45, 55, 72, 0.7); padding-top: 12px;">
             <div style="color: var(--text-main); font-weight: 600; margin-bottom: 6px;">
-              Dorian Elijah — Founder &amp; CEO, Everyday TrueAI | Product &amp; Engineering Lead, KaiVista Labs
+              Dorian Elijah — Founder, Everyday TrueAI
             </div>
+
+            <div style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 6px;">
+              Product &amp; Engineering Lead, KaiVista Labs
+            </div>
+
             <p style="margin-bottom: 0;">
-              Through KaiVista Labs (Everyday TrueAI’s prototyping and R&amp;D studio), Dorian designs and tests real-world AI workflows—
-              then turns the best ones into clear, usable systems for clients.
+              Experience includes hands-on leadership and delivery across production studio
+              environments, applied AI systems, and IT infrastructure, including work connected
+              to 5ethos Studios.
             </p>
           </div>
         </section>
@@ -490,11 +583,8 @@
           </div>
 
           <!-- IMAGE 3: Services / collaboration visual -->
-          <img
-            src="images/From_Banna4.png"
-            alt="Team collaborating with AI tools in a modern workspace"
-            style="width: 100%; max-width: 420px; border-radius: 12px; margin-bottom: 12px; display: block;"
-          >
+          <img src="images/From_Banna4.png" alt="Team collaborating with AI tools in a modern workspace"
+            style="width: 100%; max-width: 420px; border-radius: 12px; margin-bottom: 12px; display: block;">
 
           <h3 id="services-title">Ways we can work together</h3>
           <p>
@@ -526,7 +616,17 @@
                 tailored to how you or your team actually work.
               </div>
             </li>
+            <li>
+              <div class="dot">•</div>
+              <div>
+                <span>IT infrastructure support (when needed).</span> Endpoint troubleshooting, Microsoft 365/Windows
+                administration, and onsite “smart hands” field support for business-critical environments.
+              </div>
+            </li>
           </ul>
+          <div style="margin-top: 10px; color: var(--text-sub); font-size: 0.88rem; line-height: 1.5;">
+            <em>We don’t sell hype, oversized transformations, or one-size-fits-all AI strategies.</em>
+          </div>
         </section>
       </div>
 
@@ -541,6 +641,10 @@
           <p>
             KaiVista Labs is the prototyping and R&amp;D studio inside Everyday TrueAI. It is where ideas are
             stress-tested in real workflows—from solo creators to small teams and organizations.
+          </p>
+
+          <p style="margin-top: 8px; margin-bottom: 10px; color: var(--text-sub); font-size: 0.9rem;">
+            KaiVista Labs exists to explore what works before it’s sold as advice.
           </p>
 
           <p style="margin-bottom: 4px; font-size: 0.88rem;">
@@ -588,21 +692,25 @@
             collaborations, or advisory work, you can reach out directly.
           </p>
           <p style="margin-bottom: 6px;">
-  Email:
-  <a href="mailto:everydaytrueai@gmail.com" class="inline-link">
-    everydaytrueai@gmail.com
-  </a>
-</p>
+            Email:
+            <a href="mailto:everydaytrueai@gmail.com" class="inline-link">
+              everydaytrueai@gmail.com
+            </a>
+          </p>
 
           <p style="font-size: 0.85rem; color: var(--text-sub);">
-            We look foward to hearing from you.
+            We look forward to hearing from you.
+          </p>
+
+          <p style="margin-top: 10px; font-size: 0.8rem; color: var(--text-sub);">
+            Everyday TrueAI LLC · Michigan, USA
           </p>
         </section>
       </div>
     </main>
 
     <footer>
-      <div>© <span id="year"></span> Everyday TrueAI. All rights reserved.</div>
+      <div>© <span id="year"></span> Everyday TrueAI LLC. All rights reserved.</div>
       <div>Part of the KaiVista Labs initiative.</div>
     </footer>
 
@@ -611,5 +719,6 @@
     </script>
   </div>
 </body>
+
 </html>
 ...
